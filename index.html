@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Document</title>
+</head>
+
+<body onload='load()'>
+    <main class="container">
+
+        <section class="display display--header">
+            <header>
+                <h1>Team Sing Up</h1>
+            </header>
+            <nav>
+                <ul class='navigation'>
+                    <li class='navigation__item navigation__item--active'>Basic</li>
+                    <li class='navigation__item'>Social</li>
+                    <li class='navigation__item'>Certificates</li>
+                </ul>
+            </nav>
+        </section>
+
+        <section class="display display--main">
+            <form class="form__content" id='form-basic'>
+                <div class="form__item">
+                    <label for="full__name">Full name*</label>
+                    <input class='form__input--basic' type="text" id="full__name" placeholder="Foo bar"
+                        onchange="validationNome(), fisrtPageBlock()"
+                        onblur="validationNickName(), validationPhone(), save()">
+                    <span class='form__efect'></span>
+                </div>
+
+                <div class="form__item">
+                    <label for="basic__nickname">Nickname</label>
+                    <input class='form__input--basic form__states--correct form__states--default' type="text"
+                        id="basic__nickname" placeholder="Juanito" onchange="fisrtPageBlock(), validationNickName()"
+                        onblur='save()'>
+                    <span class='form__efect'></span>
+                </div>
+
+                <div class="form__item">
+                    <div class="form__contact">
+                        <div class="form__email">
+                            <label for="basic__email">Email*</label>
+                            <input class='form__input--basic' type="email" id="basic__email" placeholder="foo@bar.com"
+                                onchange="validationEmail(), fisrtPageBlock()" onblur="save()">
+                            <span class='form__efect'></span>
+                        </div>
+
+                        <div class="form__phone">
+                            <label for="basic__phone">Phone</label>
+                            <input class='form__input--basic form__states--correct form__states--default' type="tel"
+                                id="basic__phone" placeholder="(83) 00000-0000" onchange="validationPhone()"
+                                onblur="save()">
+                            <span class='form__efect'></span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="section__birthday">Birthday*</p>
+
+                <div class="section__date">
+                    <div class="form__item form__item--aniversario">
+                        <label for="date__day">Day</label>
+                        <select class='form__input--basic' value='Day' id="date__day"
+                            onchange="validationBirthdayDay(), fisrtPageBlock(), save()">
+                            <option value='Day' id='option__day' disabled selected>Day</option>
+                        </select>
+                        <span class='form__efect--birthday form__efect'></span>
+                    </div>
+
+                    <div class="form__item form__item--aniversario">
+                        <label for="date__month">Month</label>
+                        <select class='form__input--basic' id="date__month"
+                            onchange="validationBirthdayMonth(), fisrtPageBlock(),save()">
+                            <option value='' id='option__month' disabled selected>Month</option>
+                        </select>
+                        <span class='form__efect--birthday form__efect'></span>
+                    </div>
+
+                    <div class="form__item form__item--aniversario">
+                        <label for="date__year">Year</label>
+                        <select class='form__input--basic' id="date__year"
+                            onchange="validationBirthdayYear(), fisrtPageBlock(),save()">
+                            <option value='' id='option__year' disabled selected>Year</option>
+                        </select>
+                        <span class='form__efect--birthday form__efect'></span>
+                    </div>
+
+                    <div class="form__item form__item--aniversario">
+                        <label for="date__age">Age</label>
+                        <input class='form__input--basic' type="number" id="date__age" placeholder="18" disabled>
+                    </div>
+                </div>
+
+                <div class="form__item">
+                    <label for="input__terms" class="label__checkbox"><input type="checkbox" id="input__terms"
+                            onchange="fisrtPageBlock()">
+                        I
+                        accept the terms and
+                        privacy
+                    </label>
+                </div>
+                <button class='form__button form__next'>Next<span class="form__icon--next"></span></button>
+            </form>
+        </section>
+
+        <section class="display display--main off">
+            <form class="form__content form__content--certificates">
+
+                <div class='form__item' id='social'>
+                    <label for="social-input">LinkedIn</label>
+                    <input class='social__input--linkedln form__states--correct form__states--default'
+                        id="get__linkedln" onblur="formLinkedin(),secondyPageBlock(),save()" type="text"
+                        placeholder="https://www.linkedin.com/">
+                    <span class='form__efect--linkedin form__efect--second-page'></span>
+                </div>
+
+                <div class='form__item'>
+                    <label for="team-name">Github*</label>
+                    <input id="social__input--github" onblur="save(), formLinkedin()"
+                        onchange="formGitHub(), secondyPageBlock()" type="text" placeholder="https://github.com">
+                    <span class='form__efect--github social__input--github form__efect--second-page form__efect'></span>
+                </div>
+                <button class='form__button form__next' onclick="show()">Next <span
+                        class="form__icon--next"></span></button>
+            </form>
+        </section>
+
+        <section class="display display--main off">
+            <form class="form__content form__content--certificates">
+
+                <div class='form__certificates'>
+                    <div class='form__item' id='certificates'>
+                        <label class="label__favorite" for="certificates-input">Certificates</label>
+                        <div class='favorite__input'>
+                            <input class='certificates__input cert' type="text"
+                                placeholder="https://www.linkedin.com/in/" onblur='save()'>
+                            <span class="trash__icon"></span>
+                            <span class="favorite__icon"></span>
+
+                        </div>
+                    </div>
+                    <button class='form__button form__button--more'><span class='form__icon__more'></span>More<span
+                            class='form__icon__vectro'></span></button>
+                </div>
+
+                <div class='form__item'>
+                    <label for="team__name">Team Name*</label>
+                    <input type="text" id='team__name' class='form__input--third-page' placeholder="Team Front-End"
+                        onchange="validationTeamName(), thirdPageBlock()" onblur="save()">
+                    <span class="form__efect--certificates form__efect"></span>
+                </div>
+
+                <div class='form__item'>
+                    <label for="institution">Institution*</label>
+                    <input type="text" id="institution" class='form__input--third-page'
+                        placeholder="Universidade federal da Paraíba"
+                        onchange="validationInstituition(), thirdPageBlock()" onblur="save()">
+                    <span class=" form__efect--certificates form__efect"></span>
+                </div>
+
+                <div class='form__item'>
+                    <label for="graduation">Graduation*</label>
+                    <input type="text" id="graduation" class='form__input--third-page'
+                        placeholder="Ciência da Computação" onchange="validationGraduation(), thirdPageBlock()"
+                        onblur="save()">
+                    <span class=" form__efect--certificates form__efect"></span>
+                </div>
+
+                <button onclick="show()" class='form__button form__button--finish'><span
+                        class="form__icon__right"></span>
+                    Finish</button>
+            </form>
+        </section>
+
+        <section class="display display--main content off">
+
+            <div class="final__title">
+                <h1>Registration Information</h1>
+            </div>
+            <div id="line"></div>
+
+            <div class='form__item final__basic background__gray'>
+                <h1 class="final__titles">Basic</h1>
+                <div class="engloba">
+                    <div class="final--larger">
+                        <div>
+                            <p class="p_general p_general--min">Full Name</p>
+                            <p class="p_base" id="p_name"></p>
+                        </div>
+                        <div>
+                            <p class="p_general p_general--min">Nickname</p>
+                            <p class="p_base" id="p_nickname"></p>
+                        </div>
+                        <div>
+                            <p class="p_general p_general--min">Email</p>
+                            <p class="p_base" id="p_email"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p class="p_general p_general--min">Phone</p>
+                            <p class="p_base" id="p_phone"></p>
+                        </div>
+                        <div>
+                            <p class="p_general p_general--min">Birthday</p>
+                            <p class="p_base" id="p_birthday"></p>
+                        </div>
+                        <div>
+                            <p class="p_general p_general--min">Age</p>
+                            <p class="p_base" id="p_age"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='form__item final__social background__gray'>
+                <h1 class="final__titles">Social</h1>
+                <p class="p_general ">LinkedIn</p>
+                <p class="p_base" id="p_linkedln"></p>
+                <p class="p_general">Github</p>
+                <p class="p_base" id="p_github"></p>
+            </div>
+
+            <div class='form__item final__certificates background__gray'>
+                <h1 class="final__titles">Certificates</h1>
+                <div class="side">
+                    <p class="p_general p_general--mod">Team Name</p>
+                    <p class="p_base" id="p_team"></p>
+                </div>
+                <div class="side">
+                    <p class="p_general p_general--mod">Institution</p>
+                    <p class="p_base" id="p_inst"></p>
+                </div>
+                <div class="side">
+                    <p class="p_general p_general--mod">Graduation</p>
+                    <p class="p_base" id="p_grad"></p>
+                </div>
+                <div class="side">
+                    <p class="p_general p_general--mod">Cerficates</p>
+                    <p class="p_base" id="p_cert"></p>
+                </div>
+            </div>
+
+            <div class="button_side"><button type="submit" class='form__button form__create'>New
+                    Form</button></div>
+            </form>
+        </section>
+    </main>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="./scripts/certificates.js"></script>
+    <script src="./scripts/secondPageValidation.js"></script>
+    <script src="./scripts/localStorageData.js"></script>
+    <script src='./scripts/firstPageValidation.js'></script>
+    <script src="./scripts/navigation.js"></script>
+    <script src="./scripts/validationBirthday.js"></script>
+    <script src="./scripts/efectValidation.js"></script>
+    <script src="./scripts/newForm.js"></script>
+    <script src="./scripts/thirdPageValidation.js"></script>
+    <script src="./scripts/datesSelect.js"></script>
+
+</body>
+
+</html>

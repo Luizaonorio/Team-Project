@@ -1,0 +1,24 @@
+@import '../abstract/_variaveis.scss';
+
+.navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .navigation__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        box-shadow: inset 0px -2px 0px $secondary-color;
+        color: $main-color;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.12rem;
+        cursor: pointer;
+    }
+
+    .navigation__item--active {
+        box-shadow: inset 0px -3px 0px $tertiary-color;
+        color: $tertiary-color;
+    }
+}

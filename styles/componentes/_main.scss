@@ -1,0 +1,30 @@
+@import '../abstract/_variaveis.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Nunito:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: $fourth-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    main.container {
+        box-sizing: border-box;
+        background-color: $fourth-color;
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 100%;
+        max-width: 617px;
+        border-radius: 20px;
+    }
+}
+
+@media screen and (max-width:617px) {
+    body {
+        main.container {
+            padding-left: 8.10%;
+            padding-right: 8.10%;
+            border-radius: 0;
+        }
+    }
+}
